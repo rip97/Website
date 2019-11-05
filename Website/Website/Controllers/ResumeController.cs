@@ -17,6 +17,7 @@ namespace Website.Controllers
         {   
             var resume = new ResumeView();
             resume.Introduction = "";
+            //getting null reference 
             resume.WorkExperience = _context.Experience.ToList();
             resume.Education = _context.Education.ToList();
             resume.SkillSets = _context.Skill.ToList();
