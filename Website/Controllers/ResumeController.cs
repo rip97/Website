@@ -20,7 +20,7 @@ namespace Website.Controllers
         public IActionResult Index()
         {   
             var resume = new ResumeView();
-            resume.Introduction = "";
+            resume.Introduction = "Hello World!";
             resume.WorkExperience = _context.Experience.ToList();
             resume.Education = _context.Education.ToList();
             resume.SkillSets = _context.Skill.ToList();
