@@ -1,0 +1,102 @@
+﻿@model Website.Models.ResumeView
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2">
+                <h2>@Html.DisplayNameFor(Model => Model.Introduction)</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <p> @Html.DisplayTextFor(Model => Model.Introduction)</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <h2> Education </h2>
+            </div>
+            <div class="col-lg-4">
+                <h2>
+                    <a asp-area="" asp-controller="Education" asp-action="Index"> Edit </a>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <ul>
+                    @foreach (var item in Model.Education)
+                    {
+                        <li>
+                            <h4>
+                                @Html.DisplayFor(ModelItem => item.Degree)
+                                <text> - </text>
+                                @Html.DisplayFor(ModelItem => item.School)
+                            </h4>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h2> Experience and Job History </h2>
+            </div>
+            <div class="col-lg-4">
+                <h2>
+                    <a asp-area="" asp-controller="Experiences" asp-action="Index"> Edit </a>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <ul>
+                    @foreach (var item in Model.WorkExperience)
+                    {
+                        <li>
+                            <h4>
+                                @Html.DisplayFor(ModelItem => item.Title)
+                                <text> - </text>
+                                @Html.DisplayFor(ModelItem => item.Description)
+                                <text> - </text>
+                                @Html.DisplayFor(ModelItem => item.StartDate)
+                                <text>:</text>
+                                @Html.DisplayFor(ModelItem => item.EndDate)
+                            </h4>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h2> Skills and Certifcations</h2>
+            </div>
+            <div class="col-lg-4">
+                <h2>
+                    <a asp-area="" asp-controller="Skills" asp-action="Index"> Edit </a>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <ul>
+                    @foreach (var item in Model.SkillSets)
+                    {
+                        <li>
+                            <h4>
+                                @Html.DisplayFor(ModelItem => item.Title)
+                                <text> - </text>
+                                @Html.DisplayFor(ModelItem => item.Description)
+                               
+                            </h4>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
