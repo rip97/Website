@@ -11,12 +11,16 @@ namespace Website.Controllers
 {   
     public class ResumeController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
+        public ResumeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {   
             var resume = new ResumeView();
-            resume.Introduction = "";
+            resume.Introduction = "Hello World";
             //getting null reference 
             resume.WorkExperience = _context.Experience.ToList();
             resume.Education = _context.Education.ToList();
