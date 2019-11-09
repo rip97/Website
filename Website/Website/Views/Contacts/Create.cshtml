@@ -1,0 +1,67 @@
+﻿@model Website.Models.Contact
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Contact Me For An Inquire</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Comment" class="control-label"></label>
+                <input asp-for="Comment" class="form-control" />
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfRequest" class="control-label"></label>
+                <input asp-for="TypeOfRequest" class="form-control" />
+                <span asp-validation-for="TypeOfRequest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsWebApp" /> @Html.DisplayNameFor(model => model.IsWebApp)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsWindowsApp" /> @Html.DisplayNameFor(model => model.IsWindowsApp)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsPhoneApp" /> @Html.DisplayNameFor(model => model.IsPhoneApp)
+                    </label>
+                </div>
+            </div>
+            <div>
+                <button type="submit"> Submit </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

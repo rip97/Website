@@ -17,5 +17,7 @@ namespace Website.Data
         public DbSet<Website.Models.Experience> Experience { get; set; }
 
         public DbSet<Website.Models.Skill> Skill { get; set; }
+
+        public DbSet<Website.Models.Contact> Contacts { get; set; }
     }
 }

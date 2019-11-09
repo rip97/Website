@@ -10,22 +10,22 @@ using Website.Models;
 
 namespace Website.Controllers
 {
-    public class SkillContrsoller : Controller
+    public class SkillsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public SkillContrsoller(ApplicationDbContext context)
+        public SkillsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: SkillContrsoller
+        // GET: Skills
         public async Task<IActionResult> Index()
         {
             return View(await _context.Skill.ToListAsync());
         }
 
-        // GET: SkillContrsoller/Details/5
+        // GET: Skills/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,13 +43,13 @@ namespace Website.Controllers
             return View(skill);
         }
 
-        // GET: SkillContrsoller/Create
+        // GET: Skills/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: SkillContrsoller/Create
+        // POST: Skills/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,7 +65,7 @@ namespace Website.Controllers
             return View(skill);
         }
 
-        // GET: SkillContrsoller/Edit/5
+        // GET: Skills/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace Website.Controllers
             return View(skill);
         }
 
-        // POST: SkillContrsoller/Edit/5
+        // POST: Skills/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +116,7 @@ namespace Website.Controllers
             return View(skill);
         }
 
-        // GET: SkillContrsoller/Delete/5
+        // GET: Skills/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace Website.Controllers
             return View(skill);
         }
 
-        // POST: SkillContrsoller/Delete/5
+        // POST: Skills/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
