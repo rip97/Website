@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +44,7 @@ namespace Website.Controllers
             return View(contact);
         }
 
+        [AllowAnonymous]
         // GET: Contacts/Create
         public IActionResult Create()
         {
@@ -68,7 +70,7 @@ namespace Website.Controllers
             }
             return View(contact);
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Sent()
         {
             return View();

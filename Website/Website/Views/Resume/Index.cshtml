@@ -19,9 +19,11 @@
             <h2> Education </h2>
         </div>
         <div class="col-lg-4">
+            @if (User.IsInRole("admin")){
             <h2>
                 <a asp-area="" asp-controller="Education" asp-action="Index"> Edit </a>
             </h2>
+            }
         </div>
     </div>
     <div class="row">
@@ -46,9 +48,12 @@
             <h2> Experience and Job History </h2>
         </div>
         <div class="col-lg-4">
-            <h2>
+            @if (User.IsInRole("admin"))
+            {
+            <h2>              
                 <a asp-area="" asp-controller="Experiences" asp-action="Index"> Edit </a>
             </h2>
+            }
         </div>
     </div>
     <div class="row">
@@ -76,9 +81,12 @@
             <h2> Skills and Certifcations</h2>
         </div>
         <div class="col-lg-4">
-            <h2>
+            @if (User.IsInRole("admin"))
+            {
+            <h2> 
                 <a asp-area="" asp-controller="Skills" asp-action="Index"> Edit </a>
             </h2>
+            }
         </div>
     </div>
     <div class="row">

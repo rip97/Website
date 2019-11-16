@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Website.Models;
 using Website.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Website.Controllers
 {   
@@ -17,6 +18,8 @@ namespace Website.Controllers
         {
             _context = context;
         }
+
+        [AllowAnonymous]
         public IActionResult Index()
         {   
             var resume = new ResumeView();
