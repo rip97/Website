@@ -16,6 +16,12 @@ namespace Website.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public IActionResult PayPal()
+        {
+            return View();
+        }
         
         
         [AllowAnonymous]

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "PayPal";
+}
+
+<h2>PayPal</h2>
+
+<form action="https://www.sandbox.PayPal.com/cgi-bin/webscr" method="post">
+
+    <input type="hidden" name="cmd" value="_xclick" />
+    <input type="hidden" name="business" value="sb-00v9s613935@business.example.com" />
+
+    <input type="hidden" name="item_name" value="My painting" />
+    <input type="hidden" name="amount" value="10.00" />
+    <input type="submit" value="Buy!" />
+
+</form>
