@@ -2,11 +2,23 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .container{
+        margin-top: 8px;
+        border-radius: 25px;
+        background-color: #0C4F8D;
+        color: gray;
+    }
+    hr{
+        background-color: black;
+    }
+</style>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-lg-2">
             <h2>@Html.DisplayNameFor(Model => Model.Introduction)</h2>
+            <hr />
         </div>
     </div>
     <div class="row">
@@ -17,6 +29,7 @@
     <div class="row">
         <div class="col-lg-4">
             <h2> Education </h2>
+            <hr />
         </div>
         <div class="col-lg-4">
             @if (User.IsInRole("admin")){
@@ -46,6 +59,7 @@
     <div class="row">
         <div class="col-lg-6">
             <h2> Experience and Job History </h2>
+            <hr />
         </div>
         <div class="col-lg-4">
             @if (User.IsInRole("admin"))
@@ -79,6 +93,7 @@
     <div class="row">
         <div class="col-lg-6">
             <h2> Skills and Certifcations</h2>
+            <hr />
         </div>
         <div class="col-lg-4">
             @if (User.IsInRole("admin"))

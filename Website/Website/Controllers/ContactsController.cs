@@ -20,12 +20,14 @@ namespace Website.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: Contacts
         public async Task<IActionResult> Index()
         {
             return View(await _context.Contacts.ToListAsync());
         }
 
+        [Authorize]
         // GET: Contacts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -75,6 +77,8 @@ namespace Website.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles ="admin")]
         // GET: Contacts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -91,11 +95,13 @@ namespace Website.Controllers
             return View(contact);
         }
 
+       
         // POST: Contacts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ContactId,Comment,FirstName,LastName,Email,TypeOfRequest,IsWebApp,IsWindowsApp,IsPhoneApp")] Contact contact)
         {
             if (id != contact.ContactId)
@@ -127,6 +133,7 @@ namespace Website.Controllers
         }
 
         // GET: Contacts/Delete/5
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,6 +154,7 @@ namespace Website.Controllers
         // POST: Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var contact = await _context.Contacts.FindAsync(id);
