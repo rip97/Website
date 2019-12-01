@@ -12,14 +12,23 @@ namespace Website.Models
         public string Comment { get; set; }
 
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
+
         public string Email { get; set; }
+
         public string TypeOfRequest { get; set; }
 
         public bool IsWebApp { get; set; }
+
         public bool IsWindowsApp { get; set; }
+
         public bool IsPhoneApp { get; set; }
-            
+
+        public bool Quote { get; set; }
+
+        public bool GeneralMessage { get; set; }
+
 
     }
 }

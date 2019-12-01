@@ -136,11 +136,9 @@ namespace Website.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -171,11 +169,9 @@ namespace Website.Data.Migrations
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
@@ -196,6 +192,8 @@ namespace Website.Data.Migrations
 
                     b.Property<string>("FirstName");
 
+                    b.Property<bool>("GeneralMessage");
+
                     b.Property<bool>("IsPhoneApp");
 
                     b.Property<bool>("IsWebApp");
@@ -203,6 +201,8 @@ namespace Website.Data.Migrations
                     b.Property<bool>("IsWindowsApp");
 
                     b.Property<string>("LastName");
+
+                    b.Property<bool>("Quote");
 
                     b.Property<string>("TypeOfRequest");
 

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Website.Data;
 using Website.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Website.Controllers
 {
@@ -20,14 +20,14 @@ namespace Website.Controllers
             _context = context;
         }
 
-        [Authorize]
+        [Authorize(Roles="admin")]
         // GET: Contacts
         public async Task<IActionResult> Index()
         {
             return View(await _context.Contacts.ToListAsync());
         }
 
-        [Authorize]
+        [Authorize(Roles ="admin")]
         // GET: Contacts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -58,26 +58,27 @@ namespace Website.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ContactId,Comment,FirstName,LastName,Email,TypeOfRequest,IsWebApp,IsWindowsApp,IsPhoneApp")] Contact contact)
+        public async Task<IActionResult> Create([Bind("ContactId,Comment,FirstName,LastName,Email,TypeOfRequest,IsWebApp,IsWindowsApp,IsPhoneApp,Quote,GeneralMessage")] Contact contact)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
-                //send emailmessages
-                string subject = "New EMMW message from " + contact.FirstName;
-                string message = "<p>You received a new message from " + contact.FirstName + " " + contact.Email + " on " + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + ":</p><p>" + contact.Comment + "</p>";
-                Services.Email.SendGmail(subject, message, new string[] { "sometest2020@gmail.com" }, " sometest2020@gmail.com");
+                //Send email notification
+                string subject = "New Request message from " + contact.FirstName;
+                string message = "<p>You received a new message from " + contact.FirstName +" "+contact.Email+ " on " + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + ":</p><p>" + contact.Comment+"</p>";
+                Services.Email.SendGmail(subject, message, new string[] { "sometest2020@gmail.com" }, " sometest2020@gmail.com ");
                 return RedirectToAction(nameof(Sent));
             }
             return View(contact);
         }
-        [AllowAnonymous]
-        public async Task<IActionResult> Sent()
+
+        //POST: Contacts/Sent
+        public IActionResult Sent()
         {
             return View();
-        }
-
+        }    
+        
         [Authorize(Roles ="admin")]
         // GET: Contacts/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -95,14 +96,13 @@ namespace Website.Controllers
             return View(contact);
         }
 
-       
         // POST: Contacts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles ="admin")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("ContactId,Comment,FirstName,LastName,Email,TypeOfRequest,IsWebApp,IsWindowsApp,IsPhoneApp")] Contact contact)
+        public async Task<IActionResult> Edit(int id, [Bind("ContactId,Comment,FirstName,LastName,Email,TypeOfRequest,IsWebApp,IsWindowsApp,IsPhoneApp,Quote,GeneralMessage")] Contact contact)
         {
             if (id != contact.ContactId)
             {
@@ -132,8 +132,8 @@ namespace Website.Controllers
             return View(contact);
         }
 
+        [Authorize(Roles ="admin")]
         // GET: Contacts/Delete/5
-        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -153,8 +153,8 @@ namespace Website.Controllers
 
         // POST: Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles ="admin")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var contact = await _context.Contacts.FindAsync(id);

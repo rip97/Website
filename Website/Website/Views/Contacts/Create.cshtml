@@ -3,39 +3,15 @@
 @{
     ViewData["Title"] = "Create";
 }
-<style>
-    h2{
-        margin-top: 10px;
-        font-size: 50px;
-    }
-    hr{
-        background-color: black;
-    }
-    .row{
-        color: black;
-        font-size: 20px;
-    }
-    .form-control{
-        background-color: lightgrey;
-    }
-    .text-danger{
-        background-color: lightgrey;
-        color: lightgrey;
-        font-size: 18px;
-    }
-    #contact{
-        border-radius: 15px;
-        background-color: gray;
-    }
-</style>
 
-<h2>Contact Me For An Inquire</h2>
+<h2>Create</h2>
+<h4>Contact</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <img src="~/images/contactme.png" alt="A picture" />
+        <img src="~/images/contactme.png" height="400" width="400" />
     </div>
-    <div id="contact" class="col-md-4">
+    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -63,33 +39,76 @@
                 <input asp-for="TypeOfRequest" class="form-control" />
                 <span asp-validation-for="TypeOfRequest" class="text-danger"></span>
             </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input id="quote" type="radio" class="form-check-input" name="option" /> @Html.DisplayNameFor(model => model.Quote)
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input id="general" type="radio" class="form-check-input" name="option" /> @Html.DisplayNameFor(model => model.GeneralMessage)
+                </label>
+            </div>
+            @section scripts
+            {
+                <script>
+                    debugger
+                    $(document).ready(function () {
+                        disable();
+                    });
+
+                    //set all check boxes to false
+                    function disable() {
+                        document.getElementById("web").disabled = true;
+                        document.getElementById("Win").disabled = true;
+                        document.getElementById("phone").disabled = true;
+                    }
+                    //enable all checkboxes
+                    function enable() {
+                        document.getElementById("web").disabled = false;
+                        document.getElementById("Win").disabled = false;
+                        document.getElementById("phone").disabled = false;
+                    }
+
+                    //function to montier checkboxes; found at https://stackoverflow.com/questions/37268508/how-to-enable-disable-checkbox-with-radio-button
+                    $('input[type=radio]').change(function ()
+                    {
+                        var stat1 = $('input[id="quote"]').is(':checked');
+                        var stat2 = $('input[id="general"]').is(':checked');
+                        if (stat1) {
+                            enable();
+                        }
+                        else if (stat2) {
+                            disable();
+                        }
+                    });
+
+                </script>
+            }
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="IsWebApp" /> @Html.DisplayNameFor(model => model.IsWebApp)
+                        <input id="web" asp-for="IsWebApp" /> @Html.DisplayNameFor(model => model.IsWebApp)
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="IsWindowsApp" /> @Html.DisplayNameFor(model => model.IsWindowsApp)
+                        <input id="Win" asp-for="IsWindowsApp" /> @Html.DisplayNameFor(model => model.IsWindowsApp)
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="IsPhoneApp" /> @Html.DisplayNameFor(model => model.IsPhoneApp)
+                        <input id="phone" asp-for="IsPhoneApp" /> @Html.DisplayNameFor(model => model.IsPhoneApp)
                     </label>
                 </div>
             </div>
-            <div>
-                <button type="submit"> Submit </button>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
-
-
