@@ -23,7 +23,7 @@ namespace Website.Controllers
         public IActionResult Index()
         {   
             var resume = new ResumeView();
-            resume.Introduction = "Hello World";
+            resume.Introduction = "To gain application devolpment and computer programming experince to further my knowledge in computer science and computer programming.";
             //getting null reference 
             resume.WorkExperience = _context.Experience.ToList();
             resume.Education = _context.Education.ToList();

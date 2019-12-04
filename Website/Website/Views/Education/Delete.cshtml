@@ -3,7 +3,13 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
+<style>
+    .container-fluid {
+        margin-top: 30px;
+        background-color: white;
+    }
+</style>
+<div class="container-fluid">
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -42,4 +48,5 @@
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>
+</div>
 </div>
