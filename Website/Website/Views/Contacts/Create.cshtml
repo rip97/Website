@@ -3,15 +3,30 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h2>Create</h2>
-<h4>Contact</h4>
+<style>
+    #create{
+        border-radius: 5px;
+        background-color: #003F72;
+        color: white;
+    }
+    h1{
+        color: wheat;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 50px;
+    }
+    #image{
+        margin-left: 150px;
+        margin-top: 50px;
+    }
+</style>
+<h1> Contact Me! </h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <img src="~/images/contactme.png" height="400" width="400" />
+        <img id="image"src="~/images/contactme.png" height="400" width="400" />
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" id="create">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

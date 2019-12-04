@@ -7,7 +7,7 @@
 
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/Styles.css"/>
+       
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -20,6 +20,30 @@
             background-color: white;
             padding-top: 50px;
             padding-bottom: 20px;
+            height: auto;
+            background-image: url(/images/background.jpg)
+        }
+        .container-fluid{
+            
+            padding: 0;
+            margin: 0; 
+            width: 100%;
+            height: auto;
+            
+        }
+        .footer {
+            background-color: #010101;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+
+        #hIndex {
+            font-size: 70px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -32,10 +56,10 @@
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Resume" asp-action="Index">Resume</a>
             </li>
-                         
+
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Contacts" asp-action="Create">Contact</a>
-            </li>              
+            </li>
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Portfolio" asp-action="Index">Portfolio </a>
             </li>
@@ -46,9 +70,9 @@
 
             @if (User.IsInRole("admin"))
             {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Contacts" asp-action="Index">MangeRequests</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Contacts" asp-action="Index">MangeRequests</a>
+                </li>
             }
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="PayPal"> Payments </a>
@@ -58,7 +82,8 @@
     </nav>
     <div class="container-fluid" style="margin-top: 5px;">
         @RenderBody()
-                
+
+        
     </div>
     <div class="footer">
         <p>&copy; 2019 - MyWebsite</p>
