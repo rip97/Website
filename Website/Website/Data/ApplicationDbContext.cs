@@ -20,6 +20,8 @@ namespace Website.Data
 
         public DbSet<Website.Models.Contact> Contacts { get; set; }
 
+        public DbSet<Video> Videos { get; set; }
+
         
     }
 }

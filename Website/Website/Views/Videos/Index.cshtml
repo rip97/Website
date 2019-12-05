@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Website.Models.Video>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .container-fluid {
+        color: wheat;
+        background-color: #003F72;
+    }
+    th{
+        color: wheat;
+    }
+    td{
+        color: wheat;
+    }
+</style>
+
+
+<div class="container-fluid">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <iframe width="500" height="500" src="@Html.DisplayFor(modelItem => item.Url)"></iframe>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @if (User.IsInRole("admin"))
+                    {
+
+                        <a asp-action="Edit" asp-route-id="@item.VideoID">Edit</a> <text> | </text>
+                        <a asp-action="Details" asp-route-id="@item.VideoID"> Details </a> <text> | </text>
+                        <a asp-action="Delete" asp-route-id = "@item.VideoID"> Delete </a>
+                    }
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

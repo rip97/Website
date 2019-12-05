@@ -72,6 +72,17 @@
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="PayPal"> Payments </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Videos" asp-action="Index"> Code Tutorials</a>
+            </li>
+            @if (User.IsInRole("admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Videos" asp-action="Create">Edit Videos </a>
+                </li>
+            }
+
         </ul>
         <partial name="_LoginPartial" />
     </nav>
