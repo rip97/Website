@@ -26,7 +26,7 @@ namespace Website.Services
                 Port = 587,
                 EnableSsl = true,
                 UseDefaultCredentials = false,
-                Credentials = new System.Net.NetworkCredential("sometest2020@gmail.com", "Fortesting2020!")
+                Credentials = new System.Net.NetworkCredential("", "")
             };
 
             using (var msg = new System.Net.Mail.MailMessage(from, recipients[0], subject, content))
